@@ -1,0 +1,182 @@
+
+
+.bg-img {
+  /* The image used */
+  background-image: url("../../assets/images/movie-home.png");
+width: 100%;
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ z-index: -1;
+ opacity: 0.8;
+  /* Needed to position the navbar */
+  /* position: relative; */
+}
+.button_search{
+  background-color:#E50914!important;
+  color: rgb(249, 247, 247);
+ 
+}
+
+
+.search_symbol{
+  font-size: 20px;
+  color: whitesmoke;
+}
+.container-fluid{
+z-index: 3;
+  margin: 15px;
+  /* overflow: hidden; */
+  margin: 0;
+padding: 0;
+
+}
+
+body{
+  background-color:#000;
+}
+
+.toggle_color{
+  background-color:#e54f09!important;
+}
+ .button_search{
+  border-radius: 200px!important;
+ }
+
+
+
+
+.image{
+  z-index: 3;
+}
+
+
+.btn-success{
+  /* color:rgb(235, 8, 8)!important; */
+  font-weight: bold!important;
+  /* background-color: #f8cf02!important ; */
+}
+
+*{
+  z-index: 5;
+}
+
+.btn-info{
+  
+  color:rgb(0, 0, 0)!important;
+  font-weight: bold!important;
+  background-color: rgb(255, 204, 0)!important ;
+    font-family: 'Kreon', serif;
+}
+
+.btn-warning{
+  color:rgb(0, 0, 0)!important;
+  font-weight: bold!important;
+  background-color: #f8cf02!important ;
+}
+/* .fixd{
+  position: fixed;
+  z-index: 5;
+} */
+
+/* .fixd-top{
+  position: fixed!important;
+  z-index: 999;
+}*/
+
+.nav-bar{
+  position: fixed!important;
+  top: 0!important;
+  z-index: 10!important;
+} 
+
+/* 
+#navbarContainer {
+  height: 60px;
+}
+
+.navbar.affix {
+  position: fixed!important;
+  top: 0;
+  width: 100%;
+  z-index: 10!important;
+} */
+
+
+.btn1 {
+  border: none;
+  font-weight: 500;
+  color: #000;
+  background-image: linear-gradient(30deg, rgb(90, 79, 250), rgb(5, 252, 124));
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 17px;
+  padding: 0.2em 1.2em;
+ }
+ 
+ .btn2{
+  border: none;
+  font-weight: 500;
+  color: #000;
+  background-image: linear-gradient(30deg, rgb(217, 235, 20), #e12e1b);
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 17px;
+  padding: 0.2em 1.2em;
+ }
+ 
+ 
+ 
+ .btn3 {
+  border: none;
+  font-weight: 500;
+  color: #000;
+  background-image: linear-gradient(30deg, #e04bd6, #e8e3e3);
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 17px;
+  padding: 0.2em 1.2em;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ button:hover {
+  background-position: right center;
+  background-size: 200% auto;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse500 1.5s infinite;
+ }
+ 
+ @keyframes pulse512 {
+  0% {
+   box-shadow: 0 0 0 0 #05bada66;
+  }
+ 
+  70% {
+   box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+ 
+  100% {
+   box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+ }
+
+
+
+
+
+
+
+

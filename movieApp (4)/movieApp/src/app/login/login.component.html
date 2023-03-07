@@ -1,0 +1,44 @@
+<div class="bg_img img-fluid">
+  <div class="container" >
+    <div class="row justify-content-center mt-2">
+      <div class="col-lg-4 col-md-3 col-sm-4 login">
+      <form [formGroup]="login" (ngSubmit)="sendLoginData()" class="form-box" id="frm">
+        <div class="margin_align">
+        <h1>LOGIN</h1>
+          <br>
+          
+          <label>Email ID</label>
+        <!-- </div> -->
+
+
+        <div class="align-centr">
+        <mat-form-field appearance="fill" class="email " id="appear">
+          <input matInput placeholder="Email" type="email" id="email" formControlName="emailId"  class="input  ">
+        </mat-form-field>
+      </div>
+   
+      <label>Password</label>
+      <div class="align-centr">
+        <mat-form-field appearance="fill" id="appear">
+          <input matInput type="password" placeholder="Password" id="password" formControlName="password" class="input">
+        </mat-form-field>
+      </div>
+
+
+        <div class="brk">
+          <span>Create New Account &nbsp;&nbsp; </span>
+          <a routerLink="../register" class="text-warning" style="font-size: 18px!important;">Registration</a>
+        </div>
+      </div>
+        <!-- <br /> -->
+        <button type="submit" class="btn btn-success ms-5 mt-3" id="submit">Login</button>
+     
+      </form>
+    </div>
+    </div>
+    </div>
+  </div>
+
+
+
+  <!-- emailId -->

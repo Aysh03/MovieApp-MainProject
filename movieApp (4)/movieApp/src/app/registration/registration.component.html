@@ -1,0 +1,253 @@
+<div class="bg_img">
+  <div class="container-fluid p-0 m-0">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-6">
+        <div class="card form_width">
+          <div class="text-center">
+            <h1>App Registration Form</h1>
+            <hr />
+          </div>
+          <form [formGroup]="signupForm" (ngSubmit)="sendSignupData()" class="form-group">
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control input_width" formControlName="firstName"
+                  placeholder="Enter first name" id="firstName" />
+                <div class="form-text text-warning"
+                  *ngIf="firstName?.errors?.['required'] && (firstName?.touched || firstName?.dirty)">
+                  firstName is required
+                </div>
+                <div class="form-text text-warning"
+                  *ngIf="firstName?.errors?.['minlength'] && (firstName?.touched || firstName?.dirty)">
+                  firstName is too short
+                </div>
+
+                <div class="form-text text-warning"
+                  *ngIf="firstName?.errors?.['pattern'] && (firstName?.touched || firstName?.dirty)">
+                  firstName should start with alphabet
+                </div>
+              </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control input_width" formControlName="lastName"
+                  placeholder="Enter last name" id="lastName" />
+                <div class="form-text text-warning"
+                  *ngIf="lastName?.errors?.['required'] && (lastName?.touched || lastName?.dirty)">
+                  lastName is required
+                </div>
+                <div class="form-text text-warning" *ngIf="lastName?.errors?.['minlength']">
+                  lastName is too short
+                </div>
+
+                <div class="form-text text-warning" *ngIf="lastName?.errors?.['pattern']">
+                  lastName should start with alphabet
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Email address</label>
+                <input type="email" class="form-control input_width" formControlName="emailId"
+                  placeholder="Enter emailid" id="emailId" />
+                <div class="form-text text-warning"
+                  *ngIf="emailId?.errors?.['required'] && (emailId?.touched || emailId?.dirty)">
+                  EmailId is required
+                </div>
+                <div class="form-text text-warning"
+                  *ngIf="emailId?.errors?.['pattern'] && (emailId?.touched || emailId?.dirty)">
+                  give valid email
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label me-2" style="font-size: 16px !important">Upload Your Profile</label>
+                <input type="file" class="" id="fileInput" placeholder="" formControlName="fileInput"
+                  (change)="onImageUpload($event)" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control input_width" formControlName="password"
+                  placeholder="Enter password" id="password" />
+                <div class="form-text text-warning"
+                  *ngIf="password?.errors?.['required'] && (password?.touched ||password?.dirty)">
+                  password is required
+                </div>
+                <div class="form-text text-warning"
+                  *ngIf="password?.errors?.['minlength'] || password?.errors?.['maxlength'] && (password?.touched || password?.dirty)">
+                  password should be atleast 3 and max 10 characters long
+                </div>
+              </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">ConfirmPassword</label>
+                <input type="password" class="form-control input_width" formControlName="confirmPassword"
+                  placeholder="Enter confirmPassword" id="confirmPassword" />
+                <div class="form-text text-warning"
+                  *ngIf="confirmPassword?.errors?.['required'] && (confirmPassword?.touched ||confirmPassword?.dirty)">
+                  confirmPassword is required
+                </div>
+
+                <mat-error *ngIf="signupForm.errors?.['mustMatch']===false">
+                  Password and Confirm Password should match.
+                </mat-error>
+                <div class="form-text text-warning"
+                  *ngIf="confirmPassword?.errors?.['minlength'] || confirmPassword?.errors?.['maxlength'] && (confirmPassword?.touched || confirmPassword?.dirty)">
+                  confirmPassword should be atleast 3 and max 10 characters long
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Age</label>
+                <input type="text" class="form-control input_width" formControlName="age" placeholder="Enter age"
+                  id="age" />
+                <div class="form-text text-warning" *ngIf="age?.errors?.['required'] && (age?.touched ||age?.dirty)">
+                  age is required
+                </div>
+                <div class="form-text text-warning"
+                  *ngIf="age?.errors?.['minlength'] || age?.errors?.['maxlength'] && (age?.touched || age?.dirty)">
+                  age should be atleast 3 and max 10 characters long
+                </div>
+              </div>
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label">Mobile Number</label>
+                <input type="number" class="form-control input_width" formControlName="mobileNumber"
+                  placeholder="Enter number" id="mobileNumber" />
+                <div class="form-text text-warning"
+                  *ngIf="mobileNumber?.errors?.['required'] && (mobileNumber?.touched ||mobileNumber?.dirty)">
+                  Mobile No is required
+                </div>
+                <div class="form-text text-warning"
+                  *ngIf="mobileNumber?.errors?.['pattern'] && (mobileNumber?.touched || mobileNumber?.dirty)">
+                  give valid number
+                </div>
+                <div class="form-text text-warning"
+                  *ngIf="mobileNumber?.errors?.['minlength'] && (mobileNumber?.touched || mobileNumber?.dirty)">
+                  length is too short
+                </div>
+                <div class="form-text text-warning"
+                  *ngIf="mobileNumber?.errors?.['maxlength'] && (mobileNumber?.touched || mobileNumber?.dirty)">
+                  length is too long
+                </div>
+              </div>
+            </div>
+
+            <div formGroupName="address">
+              <h2>Address</h2>
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Street</label>
+                  <input type="text" class="form-control input_width" formControlName="street"
+                    placeholder="Enter street" id="street" />
+                  <div class="form-text text-warning"
+                    *ngIf="street?.errors?.['required'] && (street?.touched ||street?.dirty)">
+                    street is required
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="street?.errors?.['pattern'] && (street?.touched || street?.dirty)">
+                    enter valid street
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="street?.errors?.['minlength'] && (street?.touched || street?.dirty)">
+                    street is too short
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="street?.errors?.['maxlength'] && (street?.touched || street?.dirty)">
+                    length is too long
+                  </div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">City</label>
+                  <input type="text" class="form-control input_width" formControlName="city" placeholder="Enter city"
+                    id="city" />
+                  <div class="form-text text-warning"
+                    *ngIf="city?.errors?.['required'] && (city?.touched ||city?.dirty)">
+                    city is required
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="city?.errors?.['pattern'] && (city?.touched || city?.dirty)">
+                    enter valid city
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="city?.errors?.['minlength'] && (city?.touched || city?.dirty)">
+                    city is too short
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="city?.errors?.['maxlength'] && (city?.touched || city?.dirty)">
+                    city is too long
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">State</label>
+                  <input type="text" class="form-control input_width" formControlName="state" placeholder="Enter state"
+                    id="state" />
+                  <div class="form-text text-warning"
+                    *ngIf="state?.errors?.['required'] && (state?.touched ||state?.dirty)">
+                    state is required
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="state?.errors?.['pattern'] && (state?.touched || state?.dirty)">
+                    enter valid state
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="state?.errors?.['minlength'] && (state?.touched || state?.dirty)">
+                    state is too short
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="state?.errors?.['maxlength'] && (state?.touched || state?.dirty)">
+                    state is too long
+                  </div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                  <label class="form-label">Zipcode</label>
+                  <input type="text" class="form-control input_width" formControlName="zipcode"
+                    placeholder="Enter zipcode" id="zipcode" />
+                  <div class="form-text text-warning"
+                    *ngIf="zipcode?.errors?.['required'] && (zipcode?.touched ||zipcode?.dirty)">
+                    zipcode is required
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="zipcode?.errors?.['pattern'] && (zipcode?.touched || zipcode?.dirty)">
+                    enter valid zipcode
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="zipcode?.errors?.['minlength'] && (zipcode?.touched || zipcode?.dirty)">
+                    zipcode is too short
+                  </div>
+                  <div class="form-text text-warning"
+                    *ngIf="zipcode?.errors?.['maxlength'] && (zipcode?.touched || zipcode?.dirty)">
+                    zipcode is too long
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="align_buttons">
+              <button type="reset" mat-button mat-raised-button color="accent" class="">
+                Reset
+              </button>
+              <button type="submit" mat-button mat-raised-button color="primary" [disabled]="signupForm.invalid"
+                class="ms-2">
+                Signup
+              </button>
+            </div>
+          </form>
+
+          <!-- <img
+          height="200px"
+          width="200px"
+          src="{{ 'data:image/jpeg;base64,' + profilePicData }} "
+        /> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

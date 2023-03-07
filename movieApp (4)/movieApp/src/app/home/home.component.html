@@ -1,0 +1,355 @@
+<!--Trending movies-->
+<!-- <app-search class="inputSize" (searchText)="searchingMovies($event)">
+</app-search> -->
+
+<!-- <app-header appScroll></app-header> -->
+
+<div class="container-fluid">
+  <app-search class="inputSize" (searchText)="searchingMovies($event)">
+
+
+
+  </app-search>
+</div>
+
+
+
+
+<div class="container-fluid p-0 m-0 mainn">
+  <!-- <marquee
+  behavior="loop"
+    direction="right"
+    class="mt-3"
+    style="font-size: 18px; color: rgb(195, 255, 0)"
+    scrolldelay="60">
+    <h1>Feel free to watch after login</h1>
+  </marquee> -->
+  <div class="row mt-1 pt-2 px-2" style="background-color: black" *ngIf="searchBarValue" (click)="toLogin()">
+    <h3 class="heading">Trending Movies</h3>
+
+    <div class="col-sm-4 col-md-2 col-lg-2 col-xs-12  indexing mt-3" *ngFor="let movie of trendingMovies?.results; let i = index">
+
+
+      <!-- <div class="card card_sizing   mt-1-sm m-2" *ngIf="i < 12" style="background-color: powderblue"
+        matTooltip="Kindly login to Play">
+
+        <img src="{{movie.backdrop_path }}" class="card-img-top" alt="" />
+
+        <div class="card-body">
+
+
+
+          <h5 class="card-title title">{{ movie.title }}</h5>
+
+          <p>
+            <b> <span class="text-danger subTopics">Rating</span></b> :{{
+            movie.vote_average.toFixed(1)
+            }}
+          </p>
+
+          <p class="subTopics">
+            Language:
+            <span class="p-1" style="background-color: rgb(9, 180, 232)">
+              <b>{{ movie.original_language | uppercase }}</b></span>
+          </p>
+        </div>
+      </div> -->
+
+
+
+      <div
+        class="card  cardd card_sizing"  matTooltip="Kindly login to Play"
+        *ngIf="i < 6"
+        style="background-color: powderblue"
+      >
+        <img src="{{ movie.backdrop_path }}" class="card-img-top  card-image" alt="" />
+
+        <div class="card-body card-description1">
+          <h5 class="card-title  title" >{{ movie.title }}</h5>
+
+          <p>
+            <b> <span class="text-danger subTopics">Rating</span></b> :{{
+              movie.vote_average
+            }}
+          </p>
+
+          <p class="subTopics">
+            Language:
+            <span class="p-1" style="background-color: rgb(9, 180, 232)">
+              <b>{{ movie.original_language | uppercase }}</b></span>
+          </p>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+  <div class="row mt-1 pt-2 px-2" style="background-color: black" *ngIf="searchBarValue" (click)="toLogin()">
+    <h4 class="heading mb-2">Top Rated Movies</h4>
+    <div class="col-sm-4 col-md-2 col-lg-2 col-xs-12 " *ngFor="let movie of topRatedMovies?.results; let i = index">
+
+
+
+      <!-- <div class="card card_sizing mt-1-sm m-2" *ngIf="i < 12" style="background-color: burlywood"
+        matTooltip="Kindly login to Play">
+        <img src="{{ movie.backdrop_path }}" class="card-img-top" alt="" />
+
+        <div class="card-body">
+          <h5 class="card-title title">{{ movie.title }}</h5>
+
+          <p>
+            <b><span class="text-danger subTopics">Rating</span> </b>:{{
+            movie.vote_average
+            }}
+          </p>
+
+          <p class="subTopics">
+            Language:
+            <span class="p-1" style="background-color: rgb(9, 180, 232)">
+              <b>{{ movie.original_language | uppercase }}</b></span>
+          </p>
+        </div>
+      </div> -->
+
+
+      <div
+      class="card  cardd card_sizing"  matTooltip="Kindly login to Play"
+      *ngIf="i < 6"
+      style="background-color: burlywood!important;"
+    >
+      <img src="{{ movie.backdrop_path }}" class="card-img-top  card-image" alt="" />
+
+      <div class="card-body card-description2">
+        <h5 class="card-title  title" >{{ movie.title }}</h5>
+
+        <p>
+          <b> <span class="text-danger subTopics">Rating</span></b> :{{
+            movie.vote_average
+          }}
+        </p>
+
+        <p class="subTopics">
+          Language:
+          <span class="p-1" style="background-color: rgb(9, 180, 232)">
+            <b>{{ movie.original_language | uppercase }}</b></span>
+        </p>
+      </div>
+    </div>
+
+
+
+
+
+    </div>
+  </div>
+
+  <!-- now Playing-->
+
+  <div class="row mt-1 pt-2 px-2" style="background-color: black" *ngIf="searchBarValue" (click)="toLogin()">
+    <h4 class="heading">Now Playing Movies</h4>
+    <div class="col-sm-4 col-md-2 col-lg-2 col-xs-12 " *ngFor="let movie of nowPlayingMovies?.results; let i = index">
+
+      <!-- <div class="card card_sizing   mt-1-sm m-2" *ngIf="i < 12" style="background-color: pink"
+        matTooltip="Kindly login to Play">
+        <img src="{{ movie.backdrop_path }}" class="card-img-top" alt="" />
+
+        <div class="card-body">
+          <h5 class="card-title title">{{ movie.title }}</h5>
+
+          <p>
+            <b> <span class="text-danger subTopics">Rating</span> </b> :{{
+            movie.vote_average
+            }}
+          </p>
+
+          <p class="subTopics">
+            Language:
+            <span class="p-1" style="background-color: rgb(9, 180, 232)">
+              <b>{{ movie.original_language | uppercase }}</b></span>
+          </p>
+        </div>
+      </div> -->
+
+
+      <div
+      class="card  cardd card_sizing"  matTooltip="Kindly login to Play"
+      *ngIf="i < 6"
+      style="background-color: burlywood!important;"
+    >
+      <img src="{{ movie.backdrop_path }}" class="card-img-top  card-image" alt="" />
+
+      <div class="card-body card-description3">
+        <h5 class="card-title  title" >{{ movie.title }}</h5>
+
+        <p>
+          <b> <span class="text-danger subTopics">Rating</span></b> :{{
+            movie.vote_average
+          }}
+        </p>
+
+        <p class="subTopics">
+          Language:
+          <span class="p-1" style="background-color: rgb(9, 180, 232)">
+            <b>{{ movie.original_language | uppercase }}</b></span>
+        </p>
+      </div>
+    </div>
+
+
+
+
+    </div>
+  </div>
+
+  <div class="row mt-1 pt-2 px-2" style="background-color: black" *ngIf="searchBarValue" (click)="toLogin()">
+    <h4 class="heading">Orginals</h4>
+    <div class="col-sm-4 col-md-2 col-lg-2 col-xs-12 " *ngFor="let movie of originals?.results; let i = index">
+
+
+      <!-- <div class="card card_sizing  mt-1-sm m-2" *ngIf="i < 12" style="background-color: powderblue"
+        matTooltip="Kindly login to Play">
+        <img src="{{ movie.backdrop_path }}" class="card-img-top" alt="" />
+
+        <div class="card-body">
+          <h5 class="card-title title">{{ movie.title }}</h5>
+
+          <p>
+            <b> <span class="text-danger subTopics">Rating</span> </b>:{{
+            movie.vote_average.toFixed(1)
+            }}
+          </p>
+
+          <p class="subTopics">
+            Language:
+            <span class="p-1" style="background-color: rgb(9, 180, 232)">
+              <b>{{ movie.original_language | uppercase }}</b></span>
+          </p>
+        </div>
+      </div> -->
+
+
+
+      <div
+      class="card  cardd card_sizing me-2"  matTooltip="Kindly login to Play"
+      *ngIf="i < 6"
+      style="background-color: burlywood!important;"
+    >
+      <img src="{{ movie.backdrop_path }}" class="card-img-top  card-image" alt="" />
+
+      <div class="card-body card-description4">
+        <h5 class="card-title  title" >{{ movie.title }}</h5>
+
+        <p>
+          <b> <span class="text-danger subTopics">Rating</span></b> :{{
+            movie.vote_average
+          }}
+        </p>
+
+        <p class="subTopics">
+          Language:
+          <span class="p-1" style="background-color: rgb(9, 180, 232)">
+            <b>{{ movie.original_language | uppercase }}</b></span>
+        </p>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="row mt-1 pt-2 px-2 mb-0" style="background-color: black" *ngIf="searchBarValue" (click)="toLogin()">
+    <h4 class="heading"><b> UpComing Movies </b></h4>
+    <div class="col-sm-4 col-md-2 col-lg-2 col-xs-12 " *ngFor="let movie of upComingMovies?.results; let i = index">
+
+
+
+      <!-- <div class="card card_sizing  mt-1-sm m-2" *ngIf="i < 12" style="background-color: burlywood"
+        matTooltip="Kindly login to Play">
+        <img src="{{ movie.backdrop_path }}" class="card-img-top" alt="" />
+
+        <div class="card-body">
+          <h5 class="card-title title">{{ movie.title }}</h5>
+
+          <p>
+            <b> <span class="text-danger subTopics">Rating</span> </b>:{{
+            movie.vote_average
+            }}
+          </p>
+
+          <p class="subTopics">
+            Language:
+            <span class="p-1" style="background-color: rgb(9, 180, 232)">
+              <b>{{ movie.original_language | uppercase }}</b></span>
+          </p>
+        </div>
+      </div> -->
+
+
+      <div 
+      class="card  cardd card_sizing"  matTooltip="Kindly login to Play"
+      *ngIf="i < 6"
+      style="background-color: burlywood!important;"
+    >
+      <img src="{{ movie.backdrop_path }}" class="card-img-top  card-image" alt="" />
+
+      <div class="card-body card-description2">
+        <h5 class="card-title  title" >{{ movie.title }}</h5>
+
+        <p>
+          <b> <span class="text-danger subTopics">Rating</span></b> :{{
+            movie.vote_average
+          }}
+        </p>
+
+        <p class="subTopics">
+          Language:
+          <span class="p-1" style="background-color: rgb(9, 180, 232)">
+            <b>{{ movie.original_language | uppercase }}</b></span>
+        </p>
+      </div>
+    </div>
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+  <div class="row mt-1 pt-2 px-1 mb-0" style="background-color: black" *ngIf="!searchBarValue" (click)="toLogin()">
+    <h4 class="heading"><b> Search Results </b></h4>
+    <div class="col-sm-4 col-md-2 col-lg-2 col-xs-12  mt-3 " *ngFor="let movieres of searchResults; let i = index">
+
+
+
+      <div class="card card_size m-2" *ngIf="i < 12" style="background-color: pink" matTooltip="Kindly login to Play">
+        <img src="{{'https://image.tmdb.org/t/p/w500/'+ movieres.backdrop_path }}" class="card-img-top" alt="" />
+
+
+        <div class="card-body">
+          <h5 class="card-title title">{{ movieres.title }}</h5>
+
+          <p>
+            <b> <span class="text-danger subTopics">Rating</span> </b>:{{
+            movieres.vote_average
+            }}
+          </p>
+
+          <p class="subTopics">
+            Language:
+            <span class="p-1" style="background-color: rgb(9, 180, 232)">
+              <b>{{ movieres.original_language | uppercase }}</b></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-footer></app-footer>

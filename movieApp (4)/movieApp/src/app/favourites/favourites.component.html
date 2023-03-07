@@ -1,0 +1,121 @@
+<div class="container-fluid" style="background-color: wheat">
+  <div class="row flex-nowrap">
+ 
+    <div class="col col-md-2 col-sm-1 px-sm-2 px-0 sidenv d-flex">
+    
+      <mat-sidenav
+        #drawer
+        class="sidenav sidenv"
+        fixedInViewport
+        [attr.role]="'navigation'"
+        [mode]="'side'"
+        [opened]="true"
+      >
+        <mat-nav-list>
+          <div class="ms-auto">
+          <ul>
+            <li>
+            <a mat-list-item routerLink="../home">
+              <p class="text_color fw-bold mt-3 mb-2 ms-3">Home</p>
+            </a>
+          </li>
+          <li class="sidenv text_color  ms-3 mt-3 fw-bold">
+            <p mat-list-item >
+             <b class="ms-2  fst-bold">Hello <em>{{firstNamee | uppercase }}</em>
+            </b>
+                </p>
+</li>
+<li>
+  <p>
+                <img class="image-shape ms-2"
+                height="120px"
+                width="120px"
+                src="{{ 'data:image/jpeg;base64,' + profilePicdata }} "
+              />
+            </p>
+              </li>
+            <li>
+              <a mat-list-item routerLink="../userView">
+              <p class="text_color fw-bold mt-3 mb-2 ms-1">Your Dashboard</p>
+            </a>
+
+            </li>
+         
+
+
+     
+        </ul>
+      </div>
+        </mat-nav-list>
+      </mat-sidenav>
+    </div>
+
+    <div class="col col-md-10 col-lg-10  col-sm-10 px-sm-2 px-0 mb-2">
+      <div class="container-fluid p-0 m-0">
+        <!-- <marquee
+          behavior=""
+          direction="right"
+          class="mt-2"
+          style="font-size: 18px; color: rgb(195, 255, 0)"
+          scrolldelay="60"
+        >
+          Feel free to watch after login</marquee
+        > -->
+        <div class="row mt-3 pt-2 px-2" style="background-color:black">
+          <h5 class="heading">Movies</h5>
+          <div
+            class="col-md-2 mt-3"
+            *ngFor="let movie of allMovies; let i = index"
+          >
+            <div
+              class="card card_sizing"
+              *ngIf="i < 20"
+              style="background-color: rgb(247, 157, 147)"
+            >
+              <img
+                src="{{ movie.backdrop_path }}"
+                class="card-img-top"
+                alt=""
+              />
+
+              <div class="card-body">
+                <h5 class="card-title">{{ movie.title }}</h5>
+
+                <p>
+                  <b> <span class="text-danger">Rating</span></b> :{{
+                    movie.vote_average
+                  }}
+                </p>
+
+                <p>
+                  Language:
+                  <span class="p-1" style="background-color: rgb(9, 180, 232)">
+                    <b>{{ movie.original_language | uppercase }}</b></span
+                  >
+                </p>
+              </div>
+              <button
+                mat-button
+                btn-outline-warning
+                (click)="openDeleteDialog(movie.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+
+              <button
+                class="btn btn-sm"
+                (click)="getVideos(movie.id)"
+                data-toggle="modal"
+                data-target="#playMovieModal"
+              >
+                <span class="fas fa-play-circle fa-1x p-2 animate-play-button">
+                  Click to Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

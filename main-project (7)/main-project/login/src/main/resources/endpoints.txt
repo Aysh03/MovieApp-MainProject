@@ -1,0 +1,2 @@
+http://localhost:5555/login-auth/register-user
+http://localhost:5555/login-auth/login-check

@@ -1,0 +1,128 @@
+<div class="container-fluid h-50">
+  <div class="row flex-nowrap">
+
+    <div class="col col-md-3 col-lg-2 col-sm-3 px-sm-2 px-0 sidenv d-flex h-100">
+    
+      <mat-sidenav
+        #drawer
+        class="sidenav sidenv h-100"
+        fixedInViewport
+        [attr.role]="'navigation'"
+        [mode]="'side'"
+        [opened]="true"
+      >
+        <mat-nav-list>
+          <div class="ms-auto">
+          <ul>
+            <li>
+              <a mat-list-item routerLink="../home">
+                <p class="text_color fw-bold mt-3 mb-2 ms-3">Home</p>
+              </a>
+            </li>
+          <li class="sidenv text_color  ms-3 mt-3 fw-bold">
+            <p mat-list-item >
+             <b class="ms-2  fst-bold">Hello {{firstNamee | uppercase }}</b>
+                </p>
+</li>
+<li>
+  <p>
+                <img class="image-shape ms-2"
+                height="120px"
+                width="120px"
+                src="{{ 'data:image/jpeg;base64,' + profilePicdata }} "
+              />
+            </p>
+              </li>
+            
+              <li>
+                <a mat-list-item routerLink="../userView">
+                <p class="text_color fw-bold mt-3 mb-2 ms-1">Your Dashboard</p>
+              </a>
+  
+              </li>
+
+
+              <li>
+                <a mat-list-item routerLink="../favourites">
+                <p class="text_color fw-bold mt-3 mb-2 ms-1">Your Favourites</p>
+              </a>
+  
+              </li>
+
+        </ul>
+      </div>
+
+        </mat-nav-list>
+      </mat-sidenav>
+    </div>
+    
+
+
+
+    <div class="col col-md-9 col-lg-11  col-sm-4 px-sm-2 px-0">
+      <div class="container-fluid p-0 m-0 main-content">
+
+      <div class="feed_btn ">  
+<button mat-raised-button color="warn"
+type="button"
+class="btn "
+data-bs-toggle="modal"
+data-bs-target="#myModal"
+>
+
+Please Provide Your Valuable Feedback
+</button>
+
+</div>
+<div class="modal" id="myModal">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <!-- Modal Header -->
+     <div class="modal-header ">
+       <h4 class="modal-title">Feedback</h4>
+       <button
+         type="button"
+         class="btn-close"
+         data-bs-dismiss="modal"
+       ></button>
+     </div>
+     <!-- Modal body -->
+     <div class="modal-body">
+       <div class="card">
+        <form [formGroup]="feedBackForm" (ngSubmit)="sendFeedbackData()" class="form-box" id="frm">
+<div>
+            <mat-radio-group aria-label="Rate your experience"  formControlName="experience">
+            <mat-radio-button  value="excellent">excellent</mat-radio-button>
+            <mat-radio-button    value="good">good</mat-radio-button>
+            <mat-radio-button   value="average">average</mat-radio-button>
+            <mat-radio-button    value="bad">bad</mat-radio-button>
+          </mat-radio-group>
+    </div>
+        <div>
+            <mat-form-field appearance="fill" class="feedbackMessage " id="appear">
+                <textarea matInput formControlName="feedbackMessage" name="feedbackMessage"></textarea>
+            </mat-form-field>
+        </div>
+      
+        <button type="submit" class="btn btn-success btn_submit" id="submit">submit</button>
+    </form>
+       </div>
+     </div>
+     <!-- Modal footer -->
+     <div class="modal-footer">
+       <button
+         type="button"
+         class="btn btn-danger"
+         data-bs-dismiss="modal"
+       >
+         Close
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,43 @@
+/* .sidenv{
+    background-color:crimson;
+} */
+
+.sidenv {
+  background-color:crimson!important;
+}
+.text_color {
+  color: rgb(0, 0, 0);
+  }
+*{
+    overflow: hidden;
+  }
+  
+  .heading{
+    color: rgb(249, 250, 253);
+    font-size: 18px;
+    font-weight: bolder;
+  }
+  
+   .card_sizing{
+    width: 95%;
+  height: 100%;
+  }
+  
+  
+   body{
+    margin: 0;
+    padding: 0;
+    background-color: black!important;
+  } 
+.container-fluid{
+  background-color: black!important;
+}
+
+.image-shape{
+  border-radius: 50%;
+}
+
+/*   
+  .container-fluid{
+    background-color: black;
+  } */

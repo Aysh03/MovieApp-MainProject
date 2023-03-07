@@ -1,0 +1,8 @@
+http://localhost:9999/movie-app/get-all-movies
+http://localhost:9999/movie-app/admin/add-movie
+http://localhost:9999/movie-app/admin/update-movie
+http://localhost:9999/movie-app/admin/delete-movie/xxxx
+
+http://localhost:9999/movie-app/get-user-details
+http://localhost:9999/movie-app/add-movie-to-favourites
+http://localhost:9999/movie-app/delete-movie-from-favourites/xxxx

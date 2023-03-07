@@ -1,0 +1,50 @@
+#version: '3.9'
+#services:
+#  loginService:
+#    image: login-image
+#    container_name: login-authentication_container
+#    build: login/
+#    restart: always
+#    networks:
+#      - mynet
+#    ports:
+#      - 4444:4444
+#    depends_on:
+#      - mysqldbService
+#
+#  mysqldbService:
+#      image: mysql
+#      container_name: mysql_container1
+#      networks:
+#        - mynet
+#      ports:
+#        - 3307:3306
+#      environment:
+#        MYSQL_ROOT_PASSWORD: root
+#        MYSQL_USERNAME: root
+#        MYSQL_PASSWORD: root
+#        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+#
+#
+#  movietrackService:
+#    image: movie_app_image
+#    build: movietrack/
+#    networks:
+#      - mynet
+#    ports:
+#      - 6666:6666
+#    depends_on:
+#      -  mongodbService
+#
+#  mongodbService:
+#    image: mongo:3.6
+#    container_name: mongo_container
+#    networks:
+#      - mynet
+#    ports:
+#      - 27017:21017
+#
+#networks:
+#  mynet:
+#    driver: bridge
+#

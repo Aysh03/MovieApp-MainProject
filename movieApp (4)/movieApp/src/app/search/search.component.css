@@ -1,0 +1,33 @@
+/* .button_search{
+  background-color:#E50914!important;
+  color: rgb(249, 247, 247);
+   border-radius: 250px!important;
+ 
+} */
+/* body{
+  background-color:#000;
+} */
+
+.search_symbol{
+  color:#E50914!important;
+  font-size: 20px;
+  color: whitesmoke;
+}
+
+
+
+
+
+.inputSize{
+  border: gold;
+  justify-content: center;
+  width: 30%;
+  border:1px,solid #E50914!important;
+  color: #E50914;
+}
+
+
+*{
+  border: gold;
+  background-color:li ;
+}

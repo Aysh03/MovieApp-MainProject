@@ -1,0 +1,445 @@
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+
+    <!--sidenav -->
+    <div class="col col-md-3 col-sm-3 col-lg-2 px-sm-2 px-0 sidenv d-flex">
+
+      <mat-sidenav #drawer class="sidenav sidenv" fixedInViewport [attr.role]="'navigation'" [mode]="'side'"
+        [opened]="true">
+        <mat-nav-list>
+          <div class="ms-auto">
+            <ul class="list-unstyled">
+              <li>
+                <a mat-list-item routerLink="../home">
+                  <p class="text_color fw-bold mt-3 mb-2 ms-3">Home</p>
+                </a>
+              </li>
+              <li class="sidenv text_blue  mb-3 mt-3 fw-bold">
+                <p mat-list-item>
+                  <b class="ms-3  ">Hello Admin</b>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <img class="image-shape ms-2" height="120px" width="120px" src="../../assets/images/admin2.jfif" />
+                </p>
+              </li>
+
+              <li>
+
+              <li>
+                <a mat-list-item>
+                  <p class="text_blue  fw-bold" (click)="triggerFeedbackForm()">Feedbacks</p>
+                </a>
+              </li>
+              <!-- <li>
+                <a mat-list-item>
+                  <p data-bs-toggle="modal" data-bs-target="#favouritiesModal" class="text_blue  fw-bold"
+                    (click)="getAllUserFavourties()">Favourites</p>
+                </a>
+              </li> -->
+
+              <li>
+                <a mat-list-item>
+                  <p class="text_blue  fw-bold"
+                    (click)="getAllUserFavourties()">Favourites</p>
+                </a>
+              </li>
+
+
+            </ul>
+          </div>
+        </mat-nav-list>
+      </mat-sidenav>
+    </div>
+
+
+    <div class="col col-md-9 col-lg-8 col-xl-8 col-sm-9 px-sm-2 px-0 container-fluid1">
+      <div class="container-fluid p-0 m-0 main-content">
+        <!-- 
+    <div class="mod " *ngIf="triggerButton" >
+      <div class="m">
+        <div class="mod"> -->
+        <!-- Modal Header -->
+        <!-- <div class="mor table  .table-responsive .table-dark " *ngIf="triggerButton">
+          
+       
+    
+        <div class="mod">
+          
+          <table class="  table-responsive  text_brown">
+            <h4 class="headcol text-center">Feedback Data</h4>
+            <thead>
+              <tr>
+                <th scope="col" id="fid">Feedback Id</th>
+                <th scope="col" id="fid">Feedback date</th>
+                <th scope="col" id="fid">Experience</th>
+                <th scope="col">Feedback Message</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider tab-body">
+              <tr *ngFor="let feedback of feedbackUserdata">
+                <td>{{feedback.feedbackId}}</td>
+                <td>{{feedback.feedbackDate}}</td>
+                <td>{{feedback.experience}}</td>
+                <td>{{feedback.feedbackMessage}}
+                  <button mat-button class="btn-outline-warning feedbackPopup "
+                    (click)=" openFeedbackDeleteDialog(feedback.feedbackId)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div> -->
+
+
+      <div  class="bg-warning marginn" *ngIf="triggerButton">
+        <h3 class=" text-center text-dange" style="font-weight: bold;">Feedback Data</h3>
+      <table class="table table-striped">
+      
+        <thead>
+          <tr>
+            <th>Serial No.</th>
+            <th>Feedback Date</th>
+            <th>Feedback Message</th>
+            <th>Feedback Experience</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let feedback of feedbackUserdata let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{feedback.feedbackDate | date: 'MM/dd/yyyy hh:mm a'}}</td>
+            <!-- <td>{{feedback.feedbackDate}}</td> -->
+            <td>{{feedback.feedbackMessage}}</td>
+            <td>{{feedback.experience}}</td>
+            <button mat-button class="btn feedbackPopup "
+            (click)=" openFeedbackDeleteDialog(feedback.feedbackId)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class=" bg-warning marginnn" *ngIf="triggerbutton1">
+        <h2 class="text-center text-dange" style="font-weight: bold;"> Favourites List</h2>
+        <table class=" table table-striped  w-100" >
+      
+          <!-- <table class="  table-responsive  text_brown" > -->
+          <thead >
+      
+            <tr>
+              <th colspan="" scope="col" id="fid"> Email ID</th>
+              <!-- <th scope="col" id="fid">Movie & Language</th> -->
+              <th colspan="10" scope="col" id="fid">Movie List</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+          
+      
+      
+            <tr *ngFor="let reciepientt of allFavourites" class="">
+      
+              <td style="width: 10%!important;">{{reciepientt.emailId}}</td>
+
+              
+              <td *ngFor="let movie of reciepientt.result ">
+      
+                    
+<!-- <td>{{reciepientt.result.title|json}}</td> -->
+
+{{movie.title}}
+                  <!-- <div> {{movie.title}}</div> -->
+                
+                
+      
+                
+                
+      
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- favourities ---->
+<!-- <div class="container-fluid p-0 m-0 main-content"> -->
+  
+<!-- <div class="row"> -->
+  <!--FAvourities modal-->
+<!-- <div class="col col-md-12 col-lg-12 col-xl-8 col-sm-9">
+  <div class="modal table-responsive" id="favouritiesModal">
+    <div class="modal-dialog  w-100">
+      <div class="modal-content w-100">
+     
+        <div class="modal-header w-100">
+
+          <br>
+          <div class="modal-body w-100">
+            <h2 class="modal-title "> Favourities List</h2>
+            <table class=" table table-success table-striped  fav_tab" data-bs-toggle="modal" data-bs-target="#favouritiesModal">
+
+            
+              <thead class="tab-head">
+
+                <tr>
+                  <th scope="col" id="fid"> Email ID</th>
+                  <th scope="col" id="fid">Movie & Language</th>
+                  <th scope="col" id="fid">Movie List</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider tab-body">
+              
+
+
+                <tr *ngFor="let reciepientt of allFavourites">
+
+                  <td>{{reciepientt.emailId}}</td>
+                  <td *ngFor="let movie of reciepientt.result ">
+
+
+                    <tr>
+                      <td>
+                      <div> {{movie.title}}</div>
+                    </td>
+
+                    <td>
+                      <div>
+                        <img src="{{movie.
+                     backdrop_path}}" alt="" width="150px" height="150px">
+                      </div>
+                    </td>
+  
+                    <td>
+                      <div> {{movie.original_language}}</div>
+                    </td>
+                    </tr>
+                    
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Favorites 1</th>
+      <th>Favorites 2</th>
+      <th>Favorites 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let reciepientt of allFavourites">
+      <td rowspan="{{ reciepientt.result.length / 3 + 1}}">{{reciepientt.emailId}}</td>
+
+
+      <td>{{user.favorites[0]}}</td>
+      <td>{{user.favorites[1]}}</td>
+      <td>{{user.favorites[2]}}</td>
+    </tr>
+    <tr *ngFor="let i = 3; i < user.favorites.length; i += 3">
+      <td>{{user.favorites[i]}}</td>
+      <td>{{user.favorites[i + 1]}}</td>
+      <td>{{user.favorites[i + 2]}}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+
+
+
+
+
+<!-- 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Favorites 1</th>
+      <th>Favorites 2</th>
+      <th>Favorites 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reciepientt of allFavourites">
+      <td>{{user.username}}</td>
+      <td>{{user.favorites[0]}}</td>
+      <td>{{user.favorites[1]}}</td>
+      <td>{{user.favorites[2]}}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <app-footer></app-footer>
+
+
+
+
+
+
+  <!-- Modal body -->
+  <!-- <div class="mod " *ngIf="triggerButton" >
+    <div class="m">
+      <div class="mod"> -->
+  <!-- <div class="mod">
+          <h4 class="headcol" >Favourites Data</h4> -->
+  <!-- <div class="mod">
+    
+    data-bs-toggle="modal"
+    data-bs-target="#favouriteModal"  
+     <table class="  table-responsive  text_brown" >
+       <thead >
+    
+        <tr>
+          <th scope="col" id="fid"> Movie Title</th>
+          <th scope="col" id="fid">Language</th>
+          <th scope="col" id="fid">Movie</th>
+         
+         
+        </tr>
+      </thead> 
+      <tbody class="table-group-divider tab-body"> 
+        {{allFavourites|json}} -->
+
+
+  <!-- <tr *ngFor="let reciepientt of allFavourites">
+         
+          <td>{{reciepientt.emailId}}</td>
+          <td *ngFor="let movie of reciepientt.result ">
+
+            <div> {{movie.title}}</div>
+            <div>
+           <img> {{movie.
+              backdrop_path}}</img> -->
+  <!-- <img src="{{movie.
+                backdrop_path}}" alt="" width="200px" height="180px">
+            </div>
+
+      
+            <div> {{movie.original_language}}</div> -->
+
+
+  <!-- </td> -->
+
+
+  <!-- <tr *ngFor="let reciepient of allFavourites.reciepientt.key| keyvalue">
+            <td>{{reciepient|json}}</td>
+             <td>{{reciepient.value|json}}</td> -->
+
+
+  <!-- </tr>   -->
+
+
+
+
+
+
+  <!-- </tr> -->
+
+  <!--    
+    <tr *ngFor="let reciepientt of allFavourites.ayshRaj| keyvalue">
+      <td>{{reciepientt|json}}</td>
+      <! <td>{{reciepientt.value|json}}</td>  -->
+  <!-- <td *ngFor="let valuesFav of reciepientt.value"> -->
+  <!-- {{valuesFav|}} -->
+
+
+
+
+
+  <!-- <td>{{allFav.feedbackDate}}</td> -->
+
+  <!-- </tr>  -->
+
+
+
+
+  <!-- </tbody>
+    </table>
+
+
+
+    </div>
+  </div> -->
+  <!-- </div> -->
+
+  <!-- </div>
+</div>
+
+
+</div> -->

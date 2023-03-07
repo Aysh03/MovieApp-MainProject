@@ -1,0 +1,48 @@
+.sidenv {
+  background-color:rgb(232, 71, 95)!important;
+}
+* {
+  overflow: hidden;
+}
+.container-fluid{
+  background-color: black;
+}
+body{
+  background-color: black;
+}
+
+.boxing{
+  margin-left: 15%;
+  margin-right: 15%;
+  border: 10px solid crimson;
+}
+
+bttn{
+  text-decoration: none;
+
+  
+}
+
+.button_sort{
+  margin-left: 30%;
+}
+.image-shape{
+  border-radius: 50%;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 100%;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+
+.text_black{
+ color: black;
+}

@@ -1,0 +1,436 @@
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col col-md-2 col-lg-2 col-sm-2 px-0 sidenv d-flex">
+      <mat-sidenav
+        #drawer
+        class="sidenav sidenv"
+        fixedInViewport
+        [attr.role]="'navigation'"
+        [mode]="'side'"
+        [opened]="true"
+      >
+        <mat-nav-list>
+          <div class="ms-auto">
+            <ul>
+              <li>
+                <a mat-list-item routerLink="../home">
+                  <p class="text_color fw-bold mt-3 mb-2 ms-2">Home</p>
+                </a>
+              </li>
+              <li class="sidenv text_color ms-sm-auto ms-3 mt-3 fw-bold">
+                <p mat-list-item>
+                  <b class="ms-2 fst-bold"
+                    >Hello <em>{{ firstNamee | uppercase }} </em></b
+                  >
+                </p>
+              </li>
+              <li>
+                <p>
+                  <img
+                    class="image-shape ms-sm-auto ms-2"
+                    height="120px"
+                    width="120px"
+                    src="{{ 'data:image/jpeg;base64,' + profilePicdata }} "
+                  />
+                </p>
+              </li>
+
+              <li></li>
+              <a mat-list-item>
+                <p
+                  class="text_color ms-sm-auto fw-bold"
+                  (click)="addToTFavourites()"
+                >
+                  My Favourites <small class="fas fa-heart"></small>
+                </p>
+              </a>
+
+              <li>
+                <a mat-list-item>
+                  <p
+                    class="text_color ms-sm-auto fw-bold"
+                    (click)="addFeedbackFormdata()"
+                  >
+                    Rate Us
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </mat-nav-list>
+      </mat-sidenav>
+    </div>
+
+    <div class="col col-md-10 col-lg-10 col-sm-10 px-0">
+      <div class="container-fluid p-0 m-0 main-content">
+        <app-search class="inputSize" (searchText)="searchingMovies($event)">
+        </app-search>
+
+        <div
+          class="row mt-3 pt-2 px-2"
+          style="background-color: black"
+          *ngIf="searchBarValue"
+        >
+          <h4 class="heading">Trending Movies</h4>
+          <div
+            class="col-sm-6 col-md-2 col-lg-2 mt-2 sm-m-0"
+            *ngFor="let movie of trendingMovies?.results; let i = index"
+          >
+            <div
+              class="card card_sizing"
+              *ngIf="i < 12"
+              style="background-color: rgb(178, 245, 254)"
+            >
+              <img
+                src="{{ movie.backdrop_path }}"
+                class="card-img-top"
+                alt=""
+              />
+
+              <div class="card-body">
+                <h5 class="card-title title">{{ movie.title }}</h5>
+
+                <p>
+                  <b> <span class="text-danger subTopics">Rating</span></b>
+                  :{{ movie.vote_average.toFixed(1) }}
+                </p>
+
+                <p class="subTopics">
+                  Language:
+                  <span class="p-1" style="background-color: rgb(9, 180, 232)">
+                    <b>{{ movie.original_language | uppercase }}</b></span
+                  >
+                </p>
+              </div>
+              <div class="text-center">
+                <button
+                  class="btn btn-sm me-1"
+                  (click)="addMovieApiData(movie)"
+                >
+                  <span class="fas fa-heart fa-lg p-2 animate-favourite-button">
+                  </span>
+                </button>
+
+                <button
+                  class="btn btn-sm ms-1"
+                  (click)="getVideos(movie.id)"
+                  data-toggle="modal"
+                  data-target="#playMovieModal"
+                >
+                  <span
+                    class="fas fa-play-circle fa-lg p-2 animate-play-button"
+                  >
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="row mt-3 pt-2 px-2"
+          style="background-color: black"
+          *ngIf="searchBarValue"
+        >
+          <h5 class="heading">Top Rated Movies</h5>
+          <div
+            class="col-sm-6 col-md-2 col-lg-2 mt-3"
+            *ngFor="let movie of topRatedMovies?.results; let i = index"
+          >
+            <div
+              class="card card_sizing"
+              *ngIf="i < 12"
+              style="background-color: burlywood"
+            >
+              <img
+                src="{{ movie.backdrop_path }}"
+                class="card-img-top"
+                alt=""
+              />
+
+              <div class="card-body">
+                <h5 class="card-title title">{{ movie.title }}</h5>
+
+                <p>
+                  <b><span class="text-danger subTopics">Rating</span> </b>:{{
+                    movie.vote_average
+                  }}
+                </p>
+
+                <p class="subTopics">
+                  Language:
+                  <span class="p-1" style="background-color: rgb(9, 180, 232)">
+                    <b>{{ movie.original_language | uppercase }}</b></span
+                  >
+                </p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-sm" (click)="addMovieApiData(movie)">
+                  <span
+                    class="fas fa-heart fa-lg p-2 animate-favourite-button ms-2"
+                  >
+                  </span>
+                </button>
+
+                <button
+                  class="btn btn-sm"
+                  (click)="getVideos(movie.id)"
+                  data-toggle="modal"
+                  data-target="#playMovieModal"
+                >
+                  <span
+                    class="fas fa-play-circle fa-lg p-2 animate-play-button"
+                  >
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- now Playing-->
+        <!-- *ngIf="searchBarValue" -->
+        <div
+          class="row mt-3 pt-2 px-2"
+          style="background-color: black"
+          *ngIf="searchBarValue"
+        >
+          <h5 class="heading">Now Playing Movies</h5>
+          <div
+            class="col-md-2 col-sm-3 col-lg-2 mt-3 sm-m-0"
+            *ngFor="let movie of nowPlayingMovies?.results; let i = index"
+          >
+            <div
+              class="card card_sizing"
+              *ngIf="i < 12"
+              style="background-color: pink"
+            >
+              <img
+                src="{{ movie.backdrop_path }}"
+                class="card-img-top"
+                alt=""
+              />
+
+              <div class="card-body">
+                <h5 class="card-title title">{{ movie.title }}</h5>
+
+                <p>
+                  <b> <span class="text-danger subTopics">Rating</span> </b> :{{
+                    movie.vote_average
+                  }}
+                </p>
+
+                <p class="subTopics">
+                  Language:
+                  <span class="p-1" style="background-color: rgb(9, 180, 232)">
+                    <b>{{ movie.original_language | uppercase }}</b></span
+                  >
+                </p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-sm" (click)="addMovieApiData(movie)">
+                  <span class="fas fa-heart fa-lg p-2 animate-favourite-button">
+                  </span>
+                </button>
+
+                <button
+                  class="btn btn-sm"
+                  (click)="getVideos(movie.id)"
+                  data-toggle="modal"
+                  data-target="#playMovieModal"
+                >
+                  <span
+                    class="fas fa-play-circle fa-lg p-2 animate-play-button"
+                  >
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="row mt-3 pt-2 px-2"
+          style="background-color: black"
+          *ngIf="searchBarValue"
+        >
+          <h5 class="heading">Orginals</h5>
+          <div
+            class="col-sm-6 col-md-2 col-lg-2 mt-3"
+            *ngFor="let movie of originals?.results; let i = index"
+          >
+            <div
+              class="card card_sizing"
+              *ngIf="i < 12"
+              style="background-color: powderblue"
+            >
+              <img
+                src="{{ movie.backdrop_path }}"
+                class="card-img-top"
+                alt=""
+              />
+
+              <div class="card-body">
+                <h5 class="card-title title">{{ movie.title }}</h5>
+
+                <p>
+                  <b> <span class="text-danger subTopics">Rating</span> </b>:{{
+                    movie.vote_average
+                  }}
+                </p>
+
+                <p class="subTopics">
+                  Language:
+                  <span class="p-1" style="background-color: rgb(9, 180, 232)">
+                    <b>{{ movie.original_language | uppercase }}</b></span
+                  >
+                </p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-sm" (click)="addMovieApiData(movie)">
+                  <span class="fas fa-heart fa-lg p-2 animate-favourite-button">
+                  </span>
+                </button>
+
+                <button
+                  class="btn btn-sm"
+                  (click)="getVideos(movie.id)"
+                  data-toggle="modal"
+                  data-target="#playMovieModal"
+                >
+                  <span
+                    class="fas fa-play-circle fa-lg p-2 animate-play-button"
+                  >
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="row mt pt-2 px-2"
+          style="background-color: black"
+          *ngIf="searchBarValue"
+        >
+          <h5 class="heading"><b> UpComing Movies </b></h5>
+          <div
+            class="col-sm-6 col-md-2 col-lg-2 mt-3"
+            *ngFor="let movie of upComingMovies?.results; let i = index"
+          >
+            <div
+              class="card card_sizing"
+              *ngIf="i < 12"
+              style="background-color: burlywood"
+            >
+              <img
+                src="{{ movie.backdrop_path }}"
+                class="card-img-top"
+                alt=""
+              />
+
+              <div class="card-body">
+                <h5 class="card-title title">{{ movie.title }}</h5>
+
+                <p>
+                  <b> <span class="text-danger subTopics">Rating</span> </b>:{{
+                    movie.vote_average
+                  }}
+                </p>
+
+                <p class="subTopics">
+                  Language:
+                  <span class="p-1" style="background-color: rgb(9, 180, 232)">
+                    <b>{{ movie.original_language | uppercase }}</b></span
+                  >
+                </p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-sm" (click)="addMovieApiData(movie)">
+                  <span class="fas fa-heart fa-lg p-2 animate-favourite-button">
+                  </span>
+                </button>
+
+                <button
+                  class="btn btn-sm"
+                  (click)="getVideos(movie.id)"
+                  data-toggle="modal"
+                  data-target="#playMovieModal"
+                >
+                  <span
+                    class="fas fa-play-circle fa-lg p-2 animate-play-button"
+                  >
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="row mt-3 pt-2 px-2"
+          style="background-color: black"
+          *ngIf="!searchBarValue"
+        >
+          <h4 class="heading"><b> Search Results </b></h4>
+          <div
+            class="col-sm-6 col-md-2 col-lg-2 mt-3"
+            *ngFor="let movieres of searchResults; let i = index"
+          >
+            <div
+              class="card card_size"
+              *ngIf="i < 12"
+              style="background-color: pink"
+            >
+              <img
+                src="{{
+                  'https://image.tmdb.org/t/p/w500/' + movieres.backdrop_path
+                }}"
+                class="card-img-top"
+                alt=""
+              />
+
+              <div class="card-body">
+                <h5 class="card-title title">{{ movieres.title }}</h5>
+
+                <p>
+                  <b> <span class="text-danger subTopics">Rating</span> </b>:{{
+                    movieres.vote_average
+                  }}
+                </p>
+
+                <p class="subTopics">
+                  Language:
+                  <span class="p-1" style="background-color: rgb(9, 180, 232)">
+                    <b>{{ movieres.original_language | uppercase }}</b></span
+                  >
+                </p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-sm" (click)="addMovieApiData(movieres)">
+                  <span class="fas fa-heart fa-lg p-2 animate-favourite-button">
+                  </span>
+                </button>
+
+                <button
+                  class="btn btn-sm"
+                  (click)="getVideos(movieres.id)"
+                  data-toggle="modal"
+                  data-target="#playMovieModal"
+                >
+                  <span
+                    class="fas fa-play-circle fa-lg p-2 animate-play-button"
+                  >
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

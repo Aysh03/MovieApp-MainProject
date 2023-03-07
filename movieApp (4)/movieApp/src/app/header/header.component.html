@@ -1,0 +1,99 @@
+
+
+<div class="bg-img img-fluid" >
+  <div class="container-fluid">
+
+    <nav class="navbar navbar-expand-sm ">
+      <a routerLink="../home">
+        <img
+          class="img-fluid image nav-brand"
+          src="../../assets/images/movie-logo.png"
+          alt=""
+          height="50px"
+          width="120px"
+        />
+
+
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler img-fluid toggle_color"
+        data-bs-toggle="collapse"
+        data-bs-target="#toggleMobileMenu"
+        aria-controls="toggleMobileMenu"
+        aria-expanded="false"
+        aria-label="Toggle Navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="toggleMobileMenu">
+      
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="mt-1">
+            <a routerLink="../register">
+              <button class="navbar-item btn   btn1 ms-2 btn-sm" *ngIf="auth.isLoggingIn() == false">
+                REGISTER
+              </button>
+
+
+
+
+
+            </a>
+          </li>
+          <li class="mt-1">
+            <a routerLink="../login">
+              <button class="navbar-item btn btn2  ms-3 btn-sm" *ngIf="auth.isLoggingIn() == false">
+                LOGIN
+              </button>
+            </a>
+          </li>
+          <li class="mt-1">
+            <a routerLink="../home">
+              <button class="navbar-item btn btn3 ms-3 me-2 btn-sm" *ngIf="auth.isLoggingIn() == true" (click)="logout()">
+                LOGOUT
+              </button>
+           
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div id="navbarContainer">
+  <nav class="navbar navbar-expand-lg " data-spy="affix" data-offset-top="60">
+    <a class="navbar-brand mr-auto" href="#">Brand Name</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div> -->

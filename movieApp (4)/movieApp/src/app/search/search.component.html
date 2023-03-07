@@ -1,0 +1,26 @@
+
+  <div class="d-flex justify-content-center" role="search">
+    <input
+      class="form-control mt me-2 mt-3 inputSize"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      [(ngModel)]="enteredSearchValue" #searchItem (change)="onSearchTextChanged(enteredSearchValue)"
+    
+    />
+   <!-- (change)="onSearchTextChanged(enteredSearchValue)" -->
+
+
+
+    <i
+      class="fa fa-search mt-4 search_symbol" (click)="onSearchTextChanged(searchItem.value) "
+      aria-hidden="true"
+      type="submit">
+    </i>
+
+
+
+
+
+  </div>
+

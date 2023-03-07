@@ -1,0 +1,132 @@
+
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+
+
+
+    
+    <!-- <div class="col col-md-2 col-sm-1 px-sm-2 px-0 sidenv">
+      <div
+        class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+        >
+          <span class="fs-5 d-none d-sm-inline">Menu</span>
+        </a>
+        <ul
+          class="nav nav-pills flex mb-sm-auto mb-0 align-items-center align-items-sm-start"
+          id="menu"
+        >
+          <li class="nav-item">
+            <a href="#" class="nav-link align-middle px-0">
+              <i class="fs-4 bi-house"></i>
+              <span class="ms-1 d-none d-sm-inline">Home</span>
+            </a>
+          </li>
+
+          <li class="text-white">
+          
+
+            {{ firstNamee }}
+            <img
+              height="200px"
+              width="200px"
+              src="{{ 'data:image/jpeg;base64,' + profilePicdata }} "
+            />
+          </li>
+        </ul>
+      </div>
+    </div> -->
+
+
+    <div class="col col-md-2 col-sm-1 px-sm-2 px-0 sidenv d-flex">
+    
+      <mat-sidenav
+        #drawer
+        class="sidenav sidenv"
+        fixedInViewport
+        [attr.role]="'navigation'"
+        [mode]="'side'"
+        [opened]="true"
+      >
+        <mat-nav-list>
+          <div class="ms-auto">
+          <ul>
+            <li>
+              <a mat-list-item routerLink="../home">
+                <p class="text_color fw-bold mt-3 mb-2 ms-3">Home</p>
+              </a>
+            </li>
+          <li class="sidenv text_color  ms-3 mt-3 fw-bold">
+            <p mat-list-item >
+             <b class="ms-2  fst-bold">Hello {{firstNamee | uppercase }}</b>
+                </p>
+</li>
+<li>
+  <p>
+                <img class="image-shape ms-2"
+                height="120px"
+                width="120px"
+                src="{{ 'data:image/jpeg;base64,' + profilePicdata }} "
+              />
+            </p>
+              </li>
+            
+         <li>
+
+
+     
+        </ul>
+      </div>
+        </mat-nav-list>
+      </mat-sidenav>
+    </div>
+
+
+    <div class="col col-md-10 col-lg-11 col-xl-11 col-sm-11 px-sm-2 px-0">
+      <div class="container-fluid p-0 m-0">
+
+        <div class="row">
+        <div class=" col col-lg-12 col-md-12 col-sm-12" style="background-color: black;">
+          <hr class="my-4" />
+          <iframe class="boxing embed-responsive-item"
+            style="justify-content: center"
+            width="800"
+            height="500"
+            [src]="safeUrl"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          >
+          </iframe>
+         
+        </div>
+      </div>
+        <div class="button_sort">
+         <button (click)="playPrevious()" class="btn btn-sm text-success bg-white m-2"
+        > <span  class="fa fa-backward fa-1x">&nbsp; &nbsp; Play Previous</span></button>
+
+          <button (click)="playNext()" class="btn btn-sm text-success bg-white m-2">
+            <span  class="fa fa-forward">&nbsp; &nbsp; Play Next</span>
+             </button>
+
+          <button class="btn btn-sm text-success bg-white m-2"><a routerLink="/userView" class="bttn"> Back to All Movies</a></button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+ <div class="modal"  id="playMovieModal" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <iframe [src]="safeUrl"></iframe>
+          </div>
+        </div>
+      </div>
+    </div> -->
